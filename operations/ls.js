@@ -40,7 +40,7 @@ const ls = async () => {
     // const dirsFirstArr = [...sortedDirs, ...sortedFiles];
     // console.table(dirsFirstArr);
   } catch (err) {
-    console.log(OPERATION_ERROR, err.message);
+    console.log(OPERATION_ERROR);
   }
 };
 

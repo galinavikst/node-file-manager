@@ -9,9 +9,7 @@ import {
   EXIT_MESSAGE,
   WELLCOME_MESSAGE,
 } from "./constants.js";
-import cd from "./operations/cd.js";
-import up from "./operations/up.js";
-import ls from "./operations/ls.js";
+import commandsHandler from "./commandsHandler.js";
 
 const start = async () => {
   // greeting
@@ -34,42 +32,12 @@ const start = async () => {
     output: process.stdout,
   });
 
-  const commandsHandler = (command, args) => {
-    try {
-      switch (command) {
-        case "cd":
-          if (args.length === 1) cd(...args);
-          else return console.log(INVALID_INPUT_MESSAGE);
-          break;
-
-        case "up":
-          if (args.length) return console.log(INVALID_INPUT_MESSAGE);
-          up();
-          break;
-
-        case "ls":
-          if (args.length) return console.log(INVALID_INPUT_MESSAGE);
-          ls();
-          break;
-
-        case ".exit":
-          rl.close();
-          break;
-
-        default:
-          break;
-      }
-    } catch (error) {
-      console.log(OPERATION_ERROR);
-    }
-  };
-
-  rl.on("line", (line) => {
+  rl.on("line", async (line) => {
     const command = line.split(" ")[0].trim();
     const argv = line.split(" ").slice(1);
     console.log(argv);
 
-    if (OPERATIONS.includes(command)) commandsHandler(command, argv);
+    if (OPERATIONS.includes(command)) await commandsHandler(command, argv, rl);
     else console.log(INVALID_INPUT_MESSAGE);
 
     // At the start of the program and after each end of input/operation current working directory should be printed
