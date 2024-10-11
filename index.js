@@ -11,6 +11,7 @@ import {
 } from "./constants.js";
 import cd from "./operations/cd.js";
 import up from "./operations/up.js";
+import ls from "./operations/ls.js";
 
 const start = async () => {
   // greeting
@@ -19,7 +20,7 @@ const start = async () => {
     ?.split("=")[1];
   console.log(WELLCOME_MESSAGE(userName));
 
-  // change to home directory - cd ~
+  // change to home directory - cd
   // cd(os.homedir());
   // process.chdir(os.homedir());
   // console.log(`You are currently in ${process.cwd()}`);
@@ -44,6 +45,11 @@ const start = async () => {
         case "up":
           if (args.length) return console.log(INVALID_INPUT_MESSAGE);
           up();
+          break;
+
+        case "ls":
+          if (args.length) return console.log(INVALID_INPUT_MESSAGE);
+          ls();
           break;
 
         case ".exit":

@@ -1,14 +1,13 @@
 import process from "node:process";
 import os from "node:os";
 import path from "node:path";
-import { OPERATION_ERROR, INVALID_INPUT_MESSAGE } from "../constants.js";
+import { OPERATION_ERROR } from "../constants.js";
 
 const cd = async (pathArg) => {
   // cd ~ command implementation
   if (pathArg === "~") {
     try {
       process.chdir(os.homedir());
-      console.log(`You are currently in ${process.cwd()}`);
       return;
     } catch (err) {
       console.log(OPERATION_ERROR, err.message);
@@ -29,7 +28,7 @@ const cd = async (pathArg) => {
   try {
     process.chdir(normalizedTargetPath);
   } catch (err) {
-    console.log(OPERATION_ERROR, err.message);
+    console.log(OPERATION_ERROR);
   }
 };
 
