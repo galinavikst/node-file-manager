@@ -7,6 +7,7 @@ import cat from "./operations/fs/cat.js";
 import add from "./operations/fs/add.js";
 import rn from "./operations/fs/rn.js";
 import cp from "./operations/fs/cp.js";
+import hash from "./operations/crypto/hash.js";
 
 const commandsHandler = async (command, args, rl) => {
   try {
@@ -54,7 +55,12 @@ const commandsHandler = async (command, args, rl) => {
         break;
 
       case "rm":
-        if (args.length === 1) await fsPromises.rm(args[0]);
+        if (args.length === 1) await fsPromises.rm(...args);
+        else return console.log(INVALID_INPUT_MESSAGE);
+        break;
+
+      case "hash":
+        if (args.length === 1) await hash(...args);
         else return console.log(INVALID_INPUT_MESSAGE);
         break;
 
