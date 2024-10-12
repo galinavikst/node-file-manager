@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import process from "node:process";
-import { OPERATION_ERROR } from "../constants.js";
+import { OPERATION_ERROR } from "../../constants.js";
 
 const ls = async () => {
   try {

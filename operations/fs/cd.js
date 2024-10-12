@@ -1,7 +1,7 @@
 import process from "node:process";
 import os from "node:os";
 import path from "node:path";
-import { OPERATION_ERROR } from "../constants.js";
+import { OPERATION_ERROR } from "../../constants.js";
 
 const cd = async (pathArg) => {
   // cd ~ command implementation

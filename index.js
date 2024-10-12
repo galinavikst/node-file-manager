@@ -1,4 +1,4 @@
-// npm run start -- --username=your_username
+// npm run start -- --username=type_here_your_name
 import os from "node:os";
 import readlinePromises from "node:readline/promises";
 import process from "node:process";

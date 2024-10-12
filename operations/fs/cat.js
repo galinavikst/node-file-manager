@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { OPERATION_ERROR } from "../constants.js";
+import { OPERATION_ERROR } from "../../constants.js";
 
 const cat = async (pathArg) => {
   try {

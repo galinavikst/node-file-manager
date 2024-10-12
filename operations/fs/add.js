@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { OPERATION_ERROR } from "../constants.js";
+import { OPERATION_ERROR } from "../../constants.js";
 
 async function add(filePath) {
   try {
