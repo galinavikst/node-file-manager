@@ -8,6 +8,7 @@ import add from "./operations/fs/add.js";
 import rn from "./operations/fs/rn.js";
 import cp from "./operations/fs/cp.js";
 import hash from "./operations/crypto/hash.js";
+import toggleBrotli from "./operations/zip/toggleBrotli.js";
 
 const commandsHandler = async (command, args, rl) => {
   try {
@@ -61,6 +62,12 @@ const commandsHandler = async (command, args, rl) => {
 
       case "hash":
         if (args.length === 1) await hash(...args);
+        else return console.log(INVALID_INPUT_MESSAGE);
+        break;
+
+      case "compress": // path_to_file path_to_destination
+      case "decompress":
+        if (args.length === 2) await toggleBrotli(...args, command);
         else return console.log(INVALID_INPUT_MESSAGE);
         break;
 

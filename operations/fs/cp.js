@@ -6,7 +6,7 @@ import { OPERATION_ERROR } from "../../constants.js";
 
 const cp = async (filePath, newDirectoryPath) => {
   try {
-    await fsPromises.access(filePath); // check source existanse
+    await fsPromises.access(filePath); // check source existanse first
 
     const fileName = path.basename(filePath);
     const pathToCopy = path.join(newDirectoryPath, fileName);
