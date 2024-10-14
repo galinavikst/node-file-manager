@@ -1,5 +1,9 @@
 import * as fsPromises from "node:fs/promises";
-import { OPERATION_ERROR, INVALID_INPUT_MESSAGE } from "./constants.js";
+import {
+  OPERATION_ERROR,
+  INVALID_INPUT_MESSAGE,
+  OS_OPERATIONS,
+} from "./constants.js";
 import cd from "./operations/fs/cd.js";
 import up from "./operations/fs/up.js";
 import ls from "./operations/fs/ls.js";
@@ -9,6 +13,7 @@ import rn from "./operations/fs/rn.js";
 import cp from "./operations/fs/cp.js";
 import hash from "./operations/crypto/hash.js";
 import toggleBrotli from "./operations/zip/toggleBrotli.js";
+import osOperations from "./operations/os/osOperations.js";
 
 const commandsHandler = async (command, args, rl) => {
   try {
@@ -68,6 +73,12 @@ const commandsHandler = async (command, args, rl) => {
       case "compress": // path_to_file path_to_destination
       case "decompress":
         if (args.length === 2) await toggleBrotli(...args, command);
+        else return console.log(INVALID_INPUT_MESSAGE);
+        break;
+
+      case "os":
+        if (args.length === 1 && OS_OPERATIONS.includes(args[0].toLowerCase()))
+          osOperations(args[0].toLowerCase());
         else return console.log(INVALID_INPUT_MESSAGE);
         break;
 

@@ -3,7 +3,6 @@ import os from "node:os";
 import readlinePromises from "node:readline/promises";
 import process from "node:process";
 import {
-  OPERATION_ERROR,
   INVALID_INPUT_MESSAGE,
   OPERATIONS,
   EXIT_MESSAGE,
@@ -18,10 +17,9 @@ const start = async () => {
     ?.split("=")[1];
   console.log(WELLCOME_MESSAGE(userName));
 
-  // change to home directory - cd
-  // cd(os.homedir());
-  // process.chdir(os.homedir());
-  // console.log(`You are currently in ${process.cwd()}`);
+  // change to home directory
+  process.chdir(os.homedir());
+  console.log(`You are currently in ${process.cwd()}`);
 
   // program should prompt user in console to print commands and wait for results
   console.log("Please, print commands and wait for results");
@@ -35,7 +33,6 @@ const start = async () => {
   rl.on("line", async (line) => {
     const command = line.split(" ")[0].trim();
     const argv = line.split(" ").slice(1);
-    console.log(argv);
 
     if (OPERATIONS.includes(command)) await commandsHandler(command, argv, rl);
     else console.log(INVALID_INPUT_MESSAGE);

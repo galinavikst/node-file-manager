@@ -18,13 +18,16 @@ export const OPERATIONS = [
   "mv",
   "rm",
   "os",
-  // "os --EOL",
-  // "os --cpus",
-  // "os --homedir",
-  // "os --username",
-  // "os --architecture",
   "hash",
   "compress",
   "decompress",
   ".exit",
+];
+
+export const OS_OPERATIONS = [
+  "--eol",
+  "--cpus",
+  "--homedir",
+  "--username",
+  "--architecture",
 ];
