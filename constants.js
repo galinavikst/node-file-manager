@@ -1,7 +1,11 @@
 export const EXIT_MESSAGE = (name) =>
   `Thank you for using File Manager, ${name || "Username"}, goodbye!`;
 
-export const ERROR_MESSAGE = "Operation failed";
+export const WELLCOME_MESSAGE = (name) =>
+  `Welcome to the File Manager, ${name || "Username"}!`;
+
+export const OPERATION_ERROR = "Operation failed";
+export const INVALID_INPUT_MESSAGE = "Invalid input";
 
 export const OPERATIONS = [
   "up",
@@ -13,12 +17,17 @@ export const OPERATIONS = [
   "cp",
   "mv",
   "rm",
-  "os --EOL",
-  "os --cpus",
-  "os --homedir",
-  "os --username",
-  "os --architecture",
+  "os",
   "hash",
   "compress",
   "decompress",
+  ".exit",
+];
+
+export const OS_OPERATIONS = [
+  "--eol",
+  "--cpus",
+  "--homedir",
+  "--username",
+  "--architecture",
 ];
